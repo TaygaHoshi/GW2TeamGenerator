@@ -21,7 +21,7 @@ def generate_teams(team_style : list[str], players : list[Player]):
     while not len(players) % team_size == 0:
         players.append(Player("Empty Slot", [], False, 0.0))
     
-    team_count = len(players) / len(team_size)
+    team_count = len(players) // team_size
 
     # generate teams
     # first, fill the nonrandom roles
@@ -37,17 +37,16 @@ def generate_teams(team_style : list[str], players : list[Player]):
 
                 # find possible players for that role and populate a list with them
                 for p in players: 
-                    if not p.is_taken and not p.name == "Empty Slot" and role in p.roles:
+                    if not (p.is_taken == True or p.name == "Empty Slot") and any(role in s for s in p.roles):
                         possiblePlayers.append(p)
                 
                 if not len(possiblePlayers) == 0: # there are possible players for the role
-                    
-                    if not role == team_style[0] and not team_index == 0: # if it's not the first player of the team
+                    if not (role == team_style[0] or  team_index == 0): # if it's not the first player of the team
                         
                         # choose the best player for the spot based on rating
                         best_player = possiblePlayers[0]
                         for p in possiblePlayers:
-                            if rating_difference(total_average, best_player) > rating_difference(total_average, temp_team.new_average(p)):
+                            if rating_difference(total_average, best_player.rating) > rating_difference(total_average, temp_team.new_average(p)):
                                 best_player = p
 
                         temp_team.add_member(best_player)
@@ -56,12 +55,12 @@ def generate_teams(team_style : list[str], players : list[Player]):
                     else: # if it's the first player of the team
 
                         # put a random player filling this initial role
-                        temp_player = rnd.randint(0, len(possiblePlayers) - 1)
+                        temp_player = possiblePlayers[rnd.randint(0, len(possiblePlayers) - 1)]
                         temp_team.add_member(temp_player)
                         temp_player.is_taken = True
 
                 else: # there are no possible players for the role, add a free/wildcard spot
-                    temp_team.add_member(Player("Empty Slot", 1200, role))
+                    temp_team.add_member(Player("Empty Slot", [role], False, 0.0))
 
         teams.append(temp_team)
 
@@ -78,7 +77,7 @@ def generate_teams(team_style : list[str], players : list[Player]):
 
             best_player = possibleRandomPlayers[0]
             for p in possibleRandomPlayers:
-                if rating_difference(total_average, best_player) > rating_difference(total_average, team.new_average(p)):
+                if rating_difference(total_average, best_player.rating) > rating_difference(total_average, team.new_average(p)):
                     best_player = p
         
             team.add_member(best_player)
@@ -93,4 +92,37 @@ def generate_teams(team_style : list[str], players : list[Player]):
 
 
 if __name__=="__main__":
-    pass
+
+    # read file
+    style = ["support", "damage", "random"]
+    player_list = []
+    player_list.append(Player("Player1", ["healsupport","conditiondamage","powerdamage","bunker"], False, 1400))
+    player_list.append(Player("Player2", ["powerdamage"], False, 1260))
+    player_list.append(Player("Player3", ["healsupport","conditiondamage","powerdamage"], False, 1400))
+    player_list.append(Player("Player4", ["conditiondamage","powerdamage"], False, 1300))
+    player_list.append(Player("Player5", ["conditiondamage","powerdamage"], False, 1150))
+    player_list.append(Player("Player6", ["conditiondamage","powerdamage","bunker"], False, 1600))
+    player_list.append(Player("Player7", ["powerdamage"], False, 1450))
+    player_list.append(Player("Player8", ["powerdamage"], False, 1350))
+    player_list.append(Player("Player9", ["boonsupport","conditiondamage","powerdamage"], False, 1600))
+    player_list.append(Player("Player10", ["healsupport","boonsupport"], False, 1200))
+    player_list.append(Player("Player11", ["healsupport","conditiondamage","bunker"], False, 1500))
+    player_list.append(Player("Player12", ["healsupport","conditiondamage","powerdamage"], False, 1300))
+
+    # find best result
+    best_result = generate_teams(style, player_list)
+
+    for x in range(2000):
+        reset_players(player_list)
+        temp_result = generate_teams(style, player_list)
+        if is_result_better(temp_result, best_result):
+            best_result = temp_result
+    print()
+    
+    # print best resuls
+    for team in best_result:
+        print(team.to_string())
+        print()
+    print(max_difference_in_result(best_result))
+    
+    print()

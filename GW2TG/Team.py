@@ -4,7 +4,7 @@ from Player import Player
 @dataclass
 class Team:
     team_ID : int
-    members : list[Player]
+    members : list[Player] = field(default_factory=list)
     average_rating : float = 0.0
 
     def add_member(self, p : Player):
