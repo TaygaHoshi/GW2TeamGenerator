@@ -1,0 +1,22 @@
+Team 0, size: 3, rating: 1388.6666666666667
+Player12 - 1300 - ['healsupport', 'conditiondamage', 'powerdamage']
+Player2 - 1260 - ['powerdamage']
+Player9 - 1600 - ['boonsupport', 'conditiondamage', 'powerdamage']
+
+Team 1, size: 3, rating: 1368.6666666666667
+Player3 - 1400 - ['healsupport', 'conditiondamage', 'powerdamage']
+Player1 - 1400 - ['healsupport', 'conditiondamage', 'powerdamage', 'bunker']
+Player4 - 1300 - ['conditiondamage', 'powerdamage']
+
+Team 2, size: 3, rating: 1385.3333333333333
+Player10 - 1200 - ['healsupport', 'boonsupport']
+Player8 - 1350 - ['powerdamage']
+Player6 - 1600 - ['conditiondamage', 'powerdamage', 'bunker']
+
+Team 3, size: 3, rating: 1368.6666666666667
+Player11 - 1500 - ['healsupport', 'conditiondamage', 'bunker']
+Player7 - 1450 - ['powerdamage']
+Player5 - 1150 - ['conditiondamage', 'powerdamage']
+
+Maximum rating difference between teams:20
+There are no leftover players.

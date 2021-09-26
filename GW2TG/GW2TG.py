@@ -89,40 +89,52 @@ def generate_teams(team_style : list[str], players : list[Player]):
     # return the teams created
     return teams
 
-
-
-if __name__=="__main__":
-
-    # read file
-    style = ["support", "damage", "random"]
-    player_list = []
-    player_list.append(Player("Player1", ["healsupport","conditiondamage","powerdamage","bunker"], False, 1400))
-    player_list.append(Player("Player2", ["powerdamage"], False, 1260))
-    player_list.append(Player("Player3", ["healsupport","conditiondamage","powerdamage"], False, 1400))
-    player_list.append(Player("Player4", ["conditiondamage","powerdamage"], False, 1300))
-    player_list.append(Player("Player5", ["conditiondamage","powerdamage"], False, 1150))
-    player_list.append(Player("Player6", ["conditiondamage","powerdamage","bunker"], False, 1600))
-    player_list.append(Player("Player7", ["powerdamage"], False, 1450))
-    player_list.append(Player("Player8", ["powerdamage"], False, 1350))
-    player_list.append(Player("Player9", ["boonsupport","conditiondamage","powerdamage"], False, 1600))
-    player_list.append(Player("Player10", ["healsupport","boonsupport"], False, 1200))
-    player_list.append(Player("Player11", ["healsupport","conditiondamage","bunker"], False, 1500))
-    player_list.append(Player("Player12", ["healsupport","conditiondamage","powerdamage"], False, 1300))
-
+def generate_result(style:list[str], player_list:list[Player], reroll_count:int):
+    
     # find best result
     best_result = generate_teams(style, player_list)
 
-    for x in range(2000):
+    for x in range(reroll_count):
         reset_players(player_list)
         temp_result = generate_teams(style, player_list)
         if is_result_better(temp_result, best_result):
             best_result = temp_result
+    
+    # find leftover players
+    leftovers = []
+    for p in player_list:
+        if not p.name == "Empty Slot" and not p.is_taken:
+            leftovers.append(p)
+
+    return (best_result, leftovers)
+
+if __name__=="__main__":
+    # description of the No GUI version
+    print("GW2TG - No GUI version.")
+    print("This version of GW2TG cannot accept any arguments. It will use default settings.")
+    print()
+    print("Default settings:")
+    print("- Accept player file as <players.csv>.")
+    print("- Save the result as <output.txt>.")
+    print("- Do 2000 rerolls.")
+    print("- A team will consist of 3 players; a support, a damage dealer and a random role.")
+    print()
+
+    # read file
+    print("GW2TG - Reading file...")
+    player_list = readFile("players.csv")
+
+    # generate result
+    print("GW2TG - Generating teams...")
+    style = ["support", "damage", "random"]
+    result, leftovers = generate_result(style, player_list, 2000)
+    print_result(result, leftovers)
     print()
     
-    # print best resuls
-    for team in best_result:
-        print(team.to_string())
-        print()
-    print(max_difference_in_result(best_result))
-    
-    print()
+    # save file
+    print("GW2TG - Saving output file output.txt")
+    saveFile("output.txt", result, leftovers)
+
+    # exit
+    print("GW2TG - If you used this version accidentally, try using Start.py for the version with a GUI.")
+    input("Press Return/Enter to exit.")
