@@ -5,4 +5,4 @@
  * GUI
 
 ## How to use
- [Sample form style](https://docs.google.com/forms/d/e/1FAIpQLScUDl_ECvYax1dhXi13cHridjF3wl4U2-fbC9Iq4fAWXI0wUw/viewform)
+ Use a form with exactly the same layout as [Sample form style](https://docs.google.com/forms/d/e/1FAIpQLScUDl_ECvYax1dhXi13cHridjF3wl4U2-fbC9Iq4fAWXI0wUw/viewform) and after players fill it, send it to Google Sheets. Then, export it as a *tab-seperated values file (.tsv)*. After that, change the name of the file to *players.tsv* and put it next to the .exe file. Current version lacks a GUI, and it will try to read a *players.tsv* from the .exe's directory. Then it will save the results in *output.txt*.
