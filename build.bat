@@ -1,0 +1,1 @@
+pyinstaller -c -F ".\GW2TG\GW2TG.py"
