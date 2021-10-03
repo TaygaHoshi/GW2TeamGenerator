@@ -1,25 +1,36 @@
 from Team import Team
 from Player import Player
 
-def readFile(filepath:str):
+def read_file(filepath:str):
+    # read a .tsv file
     
-    player_list = []
-    player_list.append(Player("Player1", ["healsupport","conditiondamage","powerdamage","bunker"], False, 1400))
-    player_list.append(Player("Player2", ["powerdamage"], False, 1260))
-    player_list.append(Player("Player3", ["healsupport","conditiondamage","powerdamage"], False, 1400))
-    player_list.append(Player("Player4", ["conditiondamage","powerdamage"], False, 1300))
-    player_list.append(Player("Player5", ["conditiondamage","powerdamage"], False, 1150))
-    player_list.append(Player("Player6", ["conditiondamage","powerdamage","bunker"], False, 1600))
-    player_list.append(Player("Player7", ["powerdamage"], False, 1450))
-    player_list.append(Player("Player8", ["powerdamage"], False, 1350))
-    player_list.append(Player("Player9", ["boonsupport","conditiondamage","powerdamage"], False, 1600))
-    player_list.append(Player("Player10", ["healsupport","boonsupport"], False, 1200))
-    player_list.append(Player("Player11", ["healsupport","conditiondamage","bunker"], False, 1500))
-    player_list.append(Player("Player12", ["healsupport","conditiondamage","powerdamage"], False, 1300))
+    if not filepath[-4:] == ".tsv":
+        return []
 
+    inputfile = open(filepath, "r") 
+    player_list = []
+
+    # skip the first line because it's a header
+    lines = inputfile.readlines()[1:]
+
+    # split the line and populate a list with Players
+    # see https://docs.google.com/spreadsheets/d/1O0T7o7Ba5PsGFEjuCciyZzo7o7KxsEjgKuqQEnJ10pg
+    
+    for line in lines:
+        splitted_line = line.split("\t")
+        
+        timestamp = splitted_line[0]
+        name = splitted_line[1]
+        classes = splitted_line[2].split(",")
+        roles = splitted_line[3].split(",")
+        rating = int(splitted_line[4])
+
+        generated_player = Player(name, roles, False, rating)
+        player_list.append(generated_player)
+    
     return player_list
 
-def saveFile(filepath:str, result:list[Team], leftovers:list[Player]):
+def save_file(filepath:str, result:list[Team], leftovers:list[Player]):
     
     output_file = open(filepath, "w")
 
