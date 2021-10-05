@@ -4,8 +4,8 @@ from Player import Player
 def read_file(filepath:str):
     # read a .tsv file
     
-    if not filepath[-4:] == ".tsv":
-        return []
+    if len(filepath) == 0 or not filepath[-4:] == ".tsv":
+        filepath = ".\\players.tsv"
 
     inputfile = open(filepath, "r") 
     player_list = []
@@ -32,6 +32,9 @@ def read_file(filepath:str):
 
 def save_file(filepath:str, result:list[Team], leftovers:list[Player]):
     
+    if len(filepath) == 0:
+        filepath = ".\\output.txt"
+
     output_file = open(filepath, "w")
 
     for team in result:
