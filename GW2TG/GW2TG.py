@@ -95,6 +95,10 @@ def generate_result(style:list[str], player_list:list[Player], reroll_count:int)
     if len(style) == 0:
         style = ["support", "damage", "random"]
 
+    # check if reroll_count is valid, otherwise use default value
+    if not reroll_count:
+        reroll_count = 2000
+
     # find best result
     best_result = generate_teams(style, player_list)
 
