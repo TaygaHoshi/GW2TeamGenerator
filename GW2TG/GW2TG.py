@@ -91,6 +91,10 @@ def generate_teams(team_style : list[str], players : list[Player]):
 
 def generate_result(style:list[str], player_list:list[Player], reroll_count:int):
     
+    # check if the style is valid, otherwise use default value
+    if len(style) == 0:
+        style = ["support", "damage", "random"]
+
     # find best result
     best_result = generate_teams(style, player_list)
 
