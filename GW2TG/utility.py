@@ -25,7 +25,7 @@ def read_file(filepath:str):
         roles = splitted_line[3].split(",")
         rating = int(splitted_line[4])
 
-        generated_player = Player(name, roles, False, rating)
+        generated_player = Player(name, classes, roles, rating=rating)
         player_list.append(generated_player)
     
     return player_list

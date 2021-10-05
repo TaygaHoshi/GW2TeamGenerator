@@ -19,7 +19,7 @@ def generate_teams(team_style : list[str], players : list[Player]):
 
     # add placeholders so the teams can have equal amount of players, including empty spots
     while not len(players) % team_size == 0:
-        players.append(Player("Empty Slot", [], False, 0.0))
+        players.append(Player("Empty Slot", [], [], rating=0.0))
     
     team_count = len(players) // team_size
 
@@ -60,7 +60,7 @@ def generate_teams(team_style : list[str], players : list[Player]):
                         temp_player.is_taken = True
 
                 else: # there are no possible players for the role, add a free/wildcard spot
-                    temp_team.add_member(Player("Empty Slot", [role], False, 0.0))
+                    temp_team.add_member(Player("Empty Slot", [], [role], False, 0.0))
 
         teams.append(temp_team)
 
@@ -83,7 +83,7 @@ def generate_teams(team_style : list[str], players : list[Player]):
             team.add_member(best_player)
             best_player.is_taken = True
         else:
-            team.add_member(Player("Empty Slot", [], True, 0.0))
+            team.add_member(Player("Empty Slot", [], [], True, 0.0))
             
     
     # return the teams created
