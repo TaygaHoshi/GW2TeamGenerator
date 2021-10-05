@@ -1,1 +1,1 @@
-pyinstaller -c -F ".\GW2TG\GW2TG.py"
+pyinstaller --clean -c -F ".\GW2TG\Start.py" -n "GW2TG.exe"
