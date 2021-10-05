@@ -60,7 +60,7 @@ def generate_teams(team_style : list[str], players : list[Player]):
                         temp_player.is_taken = True
 
                 else: # there are no possible players for the role, add a free/wildcard spot
-                    temp_team.add_member(Player("Empty Slot", [], [role], False, 0.0))
+                    temp_team.add_member(Player("Empty Slot", [], [role], rating=0.0))
 
         teams.append(temp_team)
 
@@ -90,14 +90,6 @@ def generate_teams(team_style : list[str], players : list[Player]):
     return teams
 
 def generate_result(style:list[str], player_list:list[Player], reroll_count:int):
-    
-    # check if the style is valid, otherwise use default value
-    if len(style) == 0:
-        style = ["support", "damage", "random"]
-
-    # check if reroll_count is valid, otherwise use default value
-    if not reroll_count:
-        reroll_count = 2000
 
     # find best result
     best_result = generate_teams(style, player_list)
