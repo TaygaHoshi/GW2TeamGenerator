@@ -5,9 +5,8 @@ from utility import *
 
 def generate_teams(team_style : list[str], players : list[Player]):
 
-    teams = []
-
     # get the player count per team
+    teams = []
     team_size = len(team_style)
 
     # find the total average

@@ -23,13 +23,12 @@ def generate(input_filepath_entry, output_filepath_entry, style_entry, reroll_co
 
     # read player file, generate result and save output
     player_list = read_file(input_filepath)
-
     result, leftovers = generate_result(style, player_list, reroll_count)
-
     save_file(output_filepath, result, leftovers)
 
 if __name__=="__main__":
 
+    # windows options
     root = tk.Tk()
     root.title("GW2TG")
     root.minsize(300, 300)
@@ -50,7 +49,7 @@ if __name__=="__main__":
     reroll_label = tk.Label(options_frame, text="Reroll count")
     reroll_entry = tk.Entry(options_frame)
 
-
+    # button to call the generate() function
     generate_button = tk.Button(root, text="Generate", command=lambda: 
                                 generate(input_entry, output_entry, style_entry, reroll_entry))
 
