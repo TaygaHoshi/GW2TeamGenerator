@@ -2,6 +2,30 @@ import tkinter as tk
 from GW2TG import *
 from utility import *
 
+def normalize_strings(input_filepath, output_filepath, style, reroll_count):
+    # input_filepath
+    input_filepath = input_filepath.lower()
+
+    # output_filepath
+    output_filepath = output_filepath.lower()
+
+    # style
+    style = style.replace(" ", "").lower()
+
+    if style and not style == "":
+        style = style.split(",")
+    else:
+        style = ["support", "damage", "random"]
+
+    # reroll_count
+
+    if not reroll_count.isnumeric() or not reroll_count or reroll_count == "" or reroll_count == 0:
+        reroll_count = 2000
+    else:
+        reroll_count = int(reroll_count)
+
+    return (input_filepath, output_filepath, style, reroll_count)
+
 def generate(input_filepath_entry, output_filepath_entry, style_entry, reroll_count_entry):
 
     # get strings from the GUI
@@ -10,16 +34,10 @@ def generate(input_filepath_entry, output_filepath_entry, style_entry, reroll_co
     style = style_entry.get()
     reroll_count = reroll_count_entry.get()
     
-    # use default values if style or reroll are empty
-    if style and not style == "":
-        style = style.split(",")
-    else:
-        style = ["support", "damage", "random"]
+    # normalize the input strings
 
-    if not reroll_count or reroll_count == "" or reroll_count == 0:
-        reroll_count = 2000
-    else:
-        reroll_count = int(reroll_count)
+    input_filepath, output_filepath, style, reroll_count = normalize_strings(input_filepath, output_filepath, style, reroll_count)
+    
 
     # read player file, generate result and save output
     player_list = read_file(input_filepath)
