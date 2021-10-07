@@ -4,10 +4,10 @@ from utility import *
 
 def normalize_strings(input_filepath, output_filepath, style, reroll_count):
     # input_filepath
-    input_filepath = input_filepath.lower()
+    input_filepath = input_filepath
 
     # output_filepath
-    output_filepath = output_filepath.lower()
+    output_filepath = output_filepath
 
     # style
     style = style.replace(" ", "").lower()
