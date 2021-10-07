@@ -64,25 +64,33 @@ def generate_teams(team_style : list[str], players : list[Player]):
         teams.append(temp_team)
 
     # after that, fill random roles
+    random_role_count = 0
+    for role in team_style:
+        if role == "random":
+            random_role_count += 1
+    
     for team in teams:
-        possibleRandomPlayers = []
 
-        # gather available players
-        for p in players:
-            if not p.is_taken and not p.name == "Empty Slot":
-                possibleRandomPlayers.append(p)
-        
-        if len(possibleRandomPlayers) > 0: # if there are available players
+        for i in range(random_role_count):
 
-            best_player = possibleRandomPlayers[0]
-            for p in possibleRandomPlayers:
-                if rating_difference(total_average, best_player.rating) > rating_difference(total_average, team.new_average(p)):
-                    best_player = p
+            possibleRandomPlayers = []
+
+            # gather available players
+            for p in players:
+                if not p.is_taken and not p.name == "Empty Slot":
+                    possibleRandomPlayers.append(p)
         
-            team.add_member(best_player)
-            best_player.is_taken = True
-        else:
-            team.add_member(Player("Empty Slot", [], [], True, 0.0))
+            if len(possibleRandomPlayers) > 0: # if there are available players
+
+                best_player = possibleRandomPlayers[0]
+                for p in possibleRandomPlayers:
+                    if rating_difference(total_average, best_player.rating) > rating_difference(total_average, team.new_average(p)):
+                        best_player = p
+        
+                team.add_member(best_player)
+                best_player.is_taken = True
+            else: # if there are no available players
+                team.add_member(Player("Empty Slot", [], [], True, 0.0))
             
     
     # return the teams created
