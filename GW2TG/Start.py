@@ -3,17 +3,26 @@ from tkinter import StringVar, filedialog as fd
 from GW2TG import *
 from utility import *
 
-def select_file(buffer:StringVar, button:tk.Button):
-    filetypes = (
-        ("Text files", ".txt"),
-        ("Tab seperated values", ".tsv"),
-        ('All files', '*.*')
-    )
+def select_file(choice:bool, buffer:StringVar, button:tk.Button):
+    
+    if choice == True:
+        # input
+        filetypes = (
+            ("Tab seperated values", ".tsv"),
+            ('All files', '*.*')
+        )
 
-    filename = fd.askopenfilename(
-        title='Open a file',
-        initialdir='/',
-        filetypes=filetypes)
+        filename = fd.askopenfilename(
+            title='Open a file',
+            initialdir='/',
+            filetypes=filetypes
+        )
+    else:
+        # output
+        filename = fd.askdirectory(
+            title='Open a folder',
+            initialdir='/'
+        )
 
     buffer.set(filename)
 
@@ -70,14 +79,14 @@ if __name__=="__main__":
     io_frame = tk.Frame(root)
     io_explanation = tk.Label(io_frame, text="Leave a spot empty to use its default value.")
     input_label = tk.Label(io_frame, text="Input File")
-    input_button = tk.Button(io_frame, text="Choose Input File", command=lambda: select_file(input_filepath, input_button))
-    output_label = tk.Label(io_frame, text="Output File")
-    output_button = tk.Button(io_frame, text="Choose Output File", command=lambda: select_file(output_filepath, output_button))
+    input_button = tk.Button(io_frame, text="Choose Input File", command=lambda: select_file(True, input_filepath, input_button))
+    output_label = tk.Label(io_frame, text="Output Folder")
+    output_button = tk.Button(io_frame, text="Choose Output Folder", command=lambda: select_file(False, output_filepath, output_button))
 
     options_frame = tk.Frame(root)
     style_label = tk.Label(options_frame, text="Style")
     style_entry = tk.Entry(options_frame)
-    reroll_label = tk.Label(options_frame, text="Reroll count")
+    reroll_label = tk.Label(options_frame, text="Reroll Count")
     reroll_entry = tk.Entry(options_frame)
 
     # button to call the generate() function

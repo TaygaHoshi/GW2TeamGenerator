@@ -32,9 +32,13 @@ def read_file(filepath:str):
 
 def save_file(filepath:str, result:list[Team], leftovers:list[Player]):
     
-    if len(filepath) == 0:
-        filepath = ".\\output.txt"
+    # Save a .txt file
 
+    if len(filepath) == 0:
+        filepath = ".\\GW2TG_Output.txt"
+    else:
+        filepath = filepath + "\\GW2TG_Output.txt"
+    
     output_file = open(filepath, "w")
 
     for team in result:
