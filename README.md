@@ -1,7 +1,7 @@
 ## GW2TeamGenerator
  Creates sPvP teams of any size, given a template, their ranked ratings and the roles they play. The main purpose of GW2TG is helping sPvP guilds create events (like in-houses and tournaments) easily while being fair to all players. GW2TG **doesn't** take build strength into consideration as that would be impossible.
 
-![GW2TG GUI](https://i.imgur.com/OSdax4j.png)
+![GW2TG GUI](https://i.imgur.com/KHEwN1H.png)
 
 ## How to use
 ### Preparation:
