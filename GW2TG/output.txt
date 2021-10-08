@@ -1,22 +1,22 @@
-Team 0, size: 3, rating: 1425.3333333333333
-Player 8 - 1600 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
-Player 7 - 1000 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
-Player 10 - 1670 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
-
-Team 1, size: 3, rating: 1421.0
-Player 5 - 1300 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+Team 0, size: 3, rating: 1434.00
 Player 12 - 1432 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
-Player 2 - 1525 - ['Rotation DPS', ' Roamer', ' Sidenoder']
-
-Team 2, size: 3, rating: 1418.6666666666667
-Player 9 - 1650 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
-Player 3 - 1400 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+Player 10 - 1670 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
 Player 6 - 1200 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
 
-Team 3, size: 3, rating: 1412.0
-Player 4 - 1500 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+Team 1, size: 3, rating: 1443.33
+Player 5 - 1300 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
 Player 11 - 1530 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
-Player 1 - 1200 - ['Boon Support']
+Player 4 - 1500 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
 
-Maximum rating difference between teams:13
+Team 2, size: 3, rating: 1416.67
+Player 7 - 1200 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+Player 9 - 1650 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+Player 3 - 1400 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+
+Team 3, size: 3, rating: 1441.67
+Player 1 - 1200 - ['Boon support']
+Player 8 - 1600 - ['healsupport', ' conditiondamage', ' powerdamage', ' bunker']
+Player 2 - 1525 - ['Rotation damage', ' Roamer', ' Sidenoder']
+
+Maximum rating difference between teams:26
 There are no leftover players.

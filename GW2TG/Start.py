@@ -47,10 +47,8 @@ def generate(input_filepath, output_filepath, style_entry, reroll_count_entry):
     reroll_count = reroll_count_entry.get()
     
     # normalize the input strings
-
     style, reroll_count = normalize_strings(style, reroll_count)
     
-
     # read player file, generate result and save output
     player_list = read_file(input_filepath)
     result, leftovers = generate_result(style, player_list, reroll_count)
@@ -74,7 +72,7 @@ if __name__=="__main__":
     io_explanation = tk.Label(io_frame, text="Leave a spot empty to use its default value.")
     input_label = tk.Label(io_frame, text="Input File")
     input_button = tk.Button(io_frame, text="Choose Input File", command=lambda: select_file(input_filepath, input_button))
-    output_label = tk.Label(io_frame, text="Output File (Full path)")
+    output_label = tk.Label(io_frame, text="Output File")
     output_button = tk.Button(io_frame, text="Choose Output File", command=lambda: select_file(output_filepath, output_button))
 
     options_frame = tk.Frame(root)
