@@ -32,7 +32,6 @@ def normalize_strings(style, reroll_count):
         style = ["support", "damage", "random"]
 
     # reroll_count
-
     if not reroll_count.isnumeric() or not reroll_count or reroll_count == "" or reroll_count == 0:
         reroll_count = 2000
     else:
@@ -88,21 +87,21 @@ if __name__=="__main__":
     # placement of GUI elements
     ## input/output
     io_frame.pack()
-    io_explanation.pack()
+    io_explanation.pack(pady=(0, 10))
     input_label.pack()
-    input_button.pack(expand=True)
+    input_button.pack(pady=(0, 10), expand=True)
     output_label.pack()
-    output_button.pack(expand=True)
+    output_button.pack(pady=(0, 10), expand=True)
 
     ## options
     options_frame.pack()
     style_label.pack()
-    style_entry.pack()
+    style_entry.pack(pady=(0, 10))
     reroll_label.pack()
     reroll_entry.pack()
 
     ## generate button
-    generate_button.pack()
+    generate_button.pack(pady=(20, 0))
 
 
     root.mainloop()
