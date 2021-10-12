@@ -117,31 +117,5 @@ def generate_result(style:list[str], player_list:list[Player], reroll_count:int)
 
 if __name__=="__main__":
     # description of the No GUI version
-    print("GW2TG - No GUI version.")
-    print("This version of GW2TG cannot accept any arguments. It will use default settings.")
-    print()
-    print("Default settings:")
-    print("- Accepts player file as <players.tsv>.")
-    print("- Saves the result as <output.txt>.")
-    print("- Does 2000 rerolls.")
-    print("- A team will consist of 3 players; a support, a damage dealer and a random role.")
-    print()
-
-    # read file
-    print("GW2TG - Reading file...")
-    player_list = read_file("players.tsv")
-
-    # generate result
-    print("GW2TG - Generating teams...")
-    style = ["support", "damage", "random"]
-    result, leftovers = generate_result(style, player_list, 2000)
-    print_result(result, leftovers)
-    print()
-    
-    # save file
-    print("GW2TG - Saving output file output.txt")
-    save_file("output.txt", result, leftovers)
-
-    # exit
-    print("GW2TG - If you used this version accidentally, try using Start.py for the version with a GUI.")
+    print("Please use Start.py instead.")
     input("Press Return/Enter to exit.")
