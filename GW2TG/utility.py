@@ -1,9 +1,9 @@
 from Team import Team
 from Player import Player
 
-def read_file(filepath:str):
-    # read a .tsv file
+def read_file(filepath:str, style_filepath:str):
     
+    # read a .tsv file
     if len(filepath) == 0 or not filepath[-4:] == ".tsv":
         filepath = ".\\players.tsv"
 
@@ -28,7 +28,12 @@ def read_file(filepath:str):
         generated_player = Player(name, classes, roles, rating=rating)
         player_list.append(generated_player)
     
-    return player_list
+    stylefile = open(".\\Styles\\" + style_filepath, "r")
+    style_to_use = []
+    for line in stylefile:
+        style_to_use.append(line.replace("\n",""))
+
+    return (player_list, style_to_use)
 
 def save_file(filepath:str, result:list[Team], leftovers:list[Player]):
     

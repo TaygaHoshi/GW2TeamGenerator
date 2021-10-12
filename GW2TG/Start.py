@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import StringVar, filedialog as fd
+from tkinter import ttk
 from GW2TG import *
 from utility import *
+import os
 
 def select_file(choice:bool, buffer:StringVar, button:tk.Button):
     
@@ -30,36 +32,39 @@ def select_file(choice:bool, buffer:StringVar, button:tk.Button):
     button.update()
 
 
-def normalize_strings(style, reroll_count):
+def style_select():
+    # then get the list of text files in Styles file
+    all_files_in_styles_folder = os.listdir(".\\Styles")
 
-    # style
-    style = style.replace(" ", "").lower()
+    all_style_files = []
 
-    if style and not style == "":
-        style = style.split(",")
-    else:
-        style = ["support", "damage", "random"]
+    for file in all_files_in_styles_folder:
+        if file[-4:] == '.txt':
+            all_style_files.append(file) 
+    
+    print(all_style_files)
 
-    # reroll_count
+    return all_style_files
+
+def generate(input_filepath, output_filepath, style_filepath, reroll_count_entry):
+
+    # get strings from the GUI
+    style_path = style_filepath.get()
+    reroll_count = reroll_count_entry.get()
+    
+    # read player and style file
+    player_list, style = read_file(input_filepath, style_path)
+
+    # normalize the strings
     if not reroll_count.isnumeric() or not reroll_count or reroll_count == "" or reroll_count == 0:
         reroll_count = 2000
     else:
         reroll_count = int(reroll_count)
 
-    return (style, reroll_count)
-
-def generate(input_filepath, output_filepath, style_entry, reroll_count_entry):
-
-    # get strings from the GUI
-    style = style_entry.get()
-    reroll_count = reroll_count_entry.get()
-    
-    # normalize the input strings
-    style, reroll_count = normalize_strings(style, reroll_count)
-    
-    # read player file, generate result and save output
-    player_list = read_file(input_filepath)
+    # generate result
     result, leftovers = generate_result(style, player_list, reroll_count)
+
+    # save output
     save_file(output_filepath, result, leftovers)
 
 if __name__=="__main__":
@@ -74,6 +79,7 @@ if __name__=="__main__":
     # temporary variables
     input_filepath = StringVar("")
     output_filepath = StringVar("")
+    style_filepath = StringVar("")
 
     # menu elements
     io_frame = tk.Frame(root)
@@ -85,13 +91,16 @@ if __name__=="__main__":
 
     options_frame = tk.Frame(root)
     style_label = tk.Label(options_frame, text="Style")
-    style_entry = tk.Entry(options_frame)
+    style_combobox = ttk.Combobox(options_frame, state="readonly", textvariable=style_filepath)
+    style_combobox['values'] = style_select()
+    style_combobox.current(0)
+
     reroll_label = tk.Label(options_frame, text="Reroll Count")
     reroll_entry = tk.Entry(options_frame)
 
     # button to call the generate() function
     generate_button = tk.Button(root, text="Generate", command=lambda: 
-                                generate(input_filepath.get(), output_filepath.get(), style_entry, reroll_entry))
+                                generate(input_filepath.get(), output_filepath.get(), style_filepath, reroll_entry))
 
     # placement of GUI elements
     ## input/output
@@ -105,7 +114,7 @@ if __name__=="__main__":
     ## options
     options_frame.pack()
     style_label.pack()
-    style_entry.pack(pady=(0, 10))
+    style_combobox.pack(pady=(0, 10))
     reroll_label.pack()
     reroll_entry.pack()
 

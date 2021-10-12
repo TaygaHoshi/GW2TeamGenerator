@@ -1,0 +1,5 @@
+support
+damage
+roamer
+random
+random
