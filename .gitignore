@@ -112,4 +112,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-GW2TG/output.txt
+GW2TG/GW2TG_Output.txt

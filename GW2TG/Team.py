@@ -27,9 +27,11 @@ class Team:
         return new_rating/(len(self.members) + 1)
 
     def to_string(self):
-        result = "Team {0}, size: {1:.0f}, rating: {2:.2f}\n".format(self.team_ID, len(self.members), self.average_rating)
+        result = "Team {0}, size: {1:.0f}, rating: {2:.2f}\n".format(self.team_ID+1, len(self.members), self.average_rating)
 
+        id = 1
         for p in self.members:
-            result += p.to_string() + "\n"
+            result += str(id) + ". " + p.to_string() + "\n"
+            id += 1
 
         return result
