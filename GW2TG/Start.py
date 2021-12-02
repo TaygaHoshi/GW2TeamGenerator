@@ -2,7 +2,6 @@
 import tkinter as tk
 from tkinter import StringVar, filedialog as fd, messagebox
 from tkinter import ttk
-import tkinter
 from GW2TG import *
 from utility import *
 import os
@@ -97,9 +96,9 @@ if __name__=="__main__":
     root.iconbitmap(".\icon.ico")
 
     # temporary variables
-    input_filepath = StringVar("")
-    output_filepath = StringVar("")
-    style_filepath = StringVar("")
+    input_filepath = StringVar(root, value="")
+    output_filepath = StringVar(root, value="")
+    style_filepath = StringVar(root, value="")
 
     # menu elements
     io_frame = tk.Frame(root)

@@ -1,0 +1,5 @@
+heal
+alacrity
+quickness
+banner
+damage
