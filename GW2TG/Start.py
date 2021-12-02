@@ -83,7 +83,7 @@ def generate(input_filepath, output_filepath, style_filepath, reroll_count_entry
 
     # save output
     try:
-        save_file(output_filepath, result, leftovers)
+        save_file(output_filepath, result, leftovers) 
     except:
         messagebox.showerror("Error", "There was a problem saving the result.")
         root.destroy()
