@@ -1,7 +1,7 @@
 ## GW2TeamGenerator
  Creates sPvP teams of any size, given a template, their ranked ratings and the roles they play. The main purpose of GW2TG is helping sPvP guilds create events (like in-houses and tournaments) easily while being fair to all players. GW2TG **doesn't** take build strength into consideration as that would be impossible.
 
-v2.1
+v2.2
 
 ![GW2TG GUI](https://i.imgur.com/oO9dG25.png)
 
@@ -20,9 +20,9 @@ v2.1
 ### Usage:
 1. **Input file**: Browse and choose a .tsv file
 2. **Output folder**: Browse and choose a folder to save the output
-3. **Style**: In the folder you extracted the .rar file, there is a Styles file. 
+3. **Style**: In the folder you extracted the .rar file, there is a Styles folder. 
 4. Create a new .txt file with a name you can understand later.
-5. Create a custom team composition, one role for each line. For example, you can add "support, support, support" if you want teams consising of 3 supports.
+5. Create a custom team composition, one role for each line. For example, you can add "support, support, support" if you want teams consising of 3 players all of which are supports.
 6. You can also use the *Default values*.
 7. **Reroll count**: Enter a positive number. I wouldn't go over 5000 for less than 20 players. If you go too high, the program will stop working.
 
