@@ -1,13 +1,21 @@
 Timestamp	Account Name (XXXX.####)	Class (Choose at least one)	Role (Choose at least one, some builds can have multiple roles)	Average Rating (Enter a number like 1253)
-9/23/2021 18:27:08	Player 1	Warrior	Boon support	1200
-9/23/2021 18:32:26	Player 2	Warrior	Rotation damage, Roamer, Sidenoder	1525
-9/24/2021 18:32:26	Player 3	Warrior	healsupport, conditiondamage, powerdamage, bunker	1400
-9/25/2021 18:32:26	Player 4	Warrior	healsupport, conditiondamage, powerdamage, bunker	1500
-9/26/2021 18:32:26	Player 5	Warrior	healsupport, conditiondamage, powerdamage, bunker	1300
-9/27/2021 18:32:26	Player 6	Warrior	healsupport, conditiondamage, powerdamage, bunker	1200
-9/28/2021 18:32:26	Player 7	Warrior	healsupport, conditiondamage, powerdamage, bunker	1200
-9/29/2021 18:32:26	Player 8	Warrior	healsupport, conditiondamage, powerdamage, bunker	1600
-9/30/2021 18:32:26	Player 9	Warrior	healsupport, conditiondamage, powerdamage, bunker	1650
-10/1/2021 18:32:26	Player 10	Warrior	healsupport, conditiondamage, powerdamage, bunker	1670
-10/2/2021 18:32:26	Player 11	Warrior	healsupport, conditiondamage, powerdamage, bunker	1530
-10/3/2021 18:32:26	Player 12	Warrior	healsupport, conditiondamage, powerdamage, bunker	1432
+9/23/2021 18:27:08	Player 1	Mesmer	sidenoder	1426
+9/23/2021 18:32:26	Player 2	Warrior	sidenoder, teamdamage	1209
+9/24/2021 18:32:26	Player 3	Guardian	support, teamdamage	1219
+9/25/2021 18:32:26	Player 4	Revenant	roamer	1345
+9/26/2021 18:32:26	Player 5	Thief	roamer	1569
+9/27/2021 18:32:26	Player 6	Ranger	sidenoder	1313
+9/28/2021 18:32:26	Player 7	Ranger	sidenoder, roamer	1446
+9/29/2021 18:32:26	Player 8	Engineer	sidenoder, teamdamage	1271
+9/30/2021 18:32:26	Player 9	Warrior	sidenoder	1332
+10/1/2021 18:32:26	Player 10	Thief	roamer	1336
+10/2/2021 18:32:26	Player 11	Guardian	support, teamdamage	1484
+10/3/2021 18:32:26	Player 12	Revenant	roamer, teamdamage	1591
+10/3/2021 18:32:26	Player 13	Warrior	sidenoder, roamer	1290
+10/3/2021 18:32:26	Player 14	Guardian	support	1235
+9/23/2021 18:27:08	Player 15	Guardian	support, teamdamage	1294
+9/23/2021 18:27:08	Player 16	Revenant	roamer, teamdamage	1409
+9/23/2021 18:27:08	Player 17	Guardian	support, teamdamage	1544
+9/23/2021 18:27:08	Player 18	Ranger	roamer	1549
+9/23/2021 18:27:08	Player 19	Mesmer	sidenoder, roamer	1449
+9/23/2021 18:27:08	Player 20	Warrior	sidenoder	1226
