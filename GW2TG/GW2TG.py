@@ -2,6 +2,7 @@ import random as rnd
 from Player import Player
 from Team import Team
 from utility import *
+from math import ceil
 
 def generate_teams(team_style : list[str], players : list[Player]):
 
@@ -16,11 +17,17 @@ def generate_teams(team_style : list[str], players : list[Player]):
 
     total_average = total_average / len(players)
 
-    # add placeholders so the teams can have equal amount of players, including empty spots
-    while not len(players) % team_size == 0:
-        players.append(Player("Empty Slot", [], [], rating=0.0))
+    # find number of teams
+    # if there are more than half the player amount needed to create a new team
+    if len(players) % team_size >= ceil(team_size/2.0):
+        while not len(players) % team_size == 0:
+            players.append(Player("Empty Slot", [], [], rating=0.0))
+        
+    closest_player_count = len(players) - (len(players) % team_size)
+    team_count = closest_player_count // team_size
     
-    team_count = len(players) // team_size
+    
+    
 
     # generate teams
     # first, fill the nonrandom roles
@@ -107,12 +114,17 @@ def generate_result(style:list[str], player_list:list[Player], reroll_count:int)
         if is_result_better(temp_result, best_result):
             best_result = temp_result
     
-    # this for loop should not be necessary, needs further bugfixing
+    # these next two for loops should not be necessary, needs further bugfixing
     # the script might put the same player in more than once because of this bug:
     # sometimes, when a player is put into a team, its is_taken flag do not update and the player is put to leftovers. 
+    
+    for temp_player in player_list:
+        temp_player.is_taken = False
+
     for gend_team in best_result:
         for gend_player in gend_team.members:
             gend_player.is_taken = True
+            
 
     # find leftover players
     leftovers = []
