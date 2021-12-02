@@ -107,6 +107,13 @@ def generate_result(style:list[str], player_list:list[Player], reroll_count:int)
         if is_result_better(temp_result, best_result):
             best_result = temp_result
     
+    # this for loop should not be necessary, needs further bugfixing
+    # the script might put the same player in more than once because of this bug:
+    # sometimes, when a player is put into a team, its is_taken flag do not update and the player is put to leftovers. 
+    for gend_team in best_result:
+        for gend_player in gend_team.members:
+            gend_player.is_taken = True
+
     # find leftover players
     leftovers = []
     for p in player_list:
