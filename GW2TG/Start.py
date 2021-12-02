@@ -1,9 +1,14 @@
+# imports
 import tkinter as tk
-from tkinter import StringVar, filedialog as fd
+from tkinter import StringVar, filedialog as fd, messagebox
 from tkinter import ttk
+import tkinter
 from GW2TG import *
 from utility import *
 import os
+
+# global variable
+root = tk.Tk()
 
 def select_file(choice:bool, buffer:StringVar, button:tk.Button):
     
@@ -53,8 +58,14 @@ def generate(input_filepath, output_filepath, style_filepath, reroll_count_entry
     reroll_count = reroll_count_entry.get()
     
     # read player and style file
-    player_list, style = read_file(input_filepath, style_path)
-
+    player_list = []
+    style = []
+    try:
+        player_list, style = read_file(input_filepath, style_path)
+    except:
+        messagebox.showerror("File Not Found", f"Please check if both player data file and style data file exist.")
+        root.destroy()
+        
     # normalize the strings
     if not reroll_count.isnumeric() or not reroll_count or reroll_count == "" or reroll_count == 0:
         reroll_count = 2000
@@ -62,15 +73,24 @@ def generate(input_filepath, output_filepath, style_filepath, reroll_count_entry
         reroll_count = int(reroll_count)
 
     # generate result
-    result, leftovers = generate_result(style, player_list, reroll_count)
+    result = []
+    leftovers = []
+    try:
+        result, leftovers = generate_result(style, player_list, reroll_count)
+    except:
+        messagebox.showerror("Error", "There was a problem generating teams.")
+        root.destroy()
 
     # save output
-    save_file(output_filepath, result, leftovers)
+    try:
+        save_file(output_filepath, result, leftovers)
+    except:
+        messagebox.showerror("Error", "There was a problem saving the result.")
+        root.destroy()
 
 if __name__=="__main__":
 
     # windows options
-    root = tk.Tk()
     root.title("GW2TG")
     root.minsize(300, 300)
     root.maxsize(500, 300)
