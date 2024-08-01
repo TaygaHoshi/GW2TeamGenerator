@@ -1,5 +1,5 @@
 ## Important Note
-This project has been abandoned, and it is being succeeded by a more generalized and optimized SaaS project. The said SaaS project is still in development.
+This project has been abandoned, and it is being succeeded by a more generalized and optimized SaaS project without connection to any specific video game.
 
 ---
 ## GW2TeamGenerator
